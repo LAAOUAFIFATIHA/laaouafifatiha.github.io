@@ -4,9 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My CV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 1.5em 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .tools, .projects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tools div, .projects div {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            width: 200px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>WHO I AM ?</h1>
-    <p>Hi, I am Fatiha Laaouafi</p>
+    <header>
+        <h1>WHO I AM ?</h1>
+        <p>Hi, I am Fatiha Laaouafi</p>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>Tools I Master</h2>
+            <div class="tools">
+                <div>GitHub</div>
+                <div>Python</div>
+                <div>Flask</div>
+                <div>Jupyter Notebooks</div>
+                <div>Flutter</div>
+                <div>Firebase</div>
+                <div>SQL</div>
+                <div>Docker</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Projects I Made</h2>
+            <div class="projects">
+                <div>
+                    <h3>Weather Forecasting App</h3>
+                    <p>A weather prediction application using machine learning models.</p>
+                </div>
+                <div>
+                    <h3>PickSchool</h3>
+                    <p>An application to predict student selection into schools based on their profile.</p>
+                </div>
+                <div>
+                    <h3>Line Following Car</h3>
+                    <p>A robotics project that uses a sensor to follow a line autonomously.</p>
+                </div>
+                <div>
+                    <h3>YOLO Detection Model</h3>
+                    <p>A real-time object detection model using the YOLO algorithm.</p>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
