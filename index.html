@@ -39,15 +39,105 @@
             border-radius: 10px;
             margin-bottom: 30px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-container {
+            position: relative;
+            display: inline-block;
+            margin: 0 auto 20px;
         }
         
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid white;
-            margin: 0 auto 20px;
+            box-shadow: 0 0 20px rgba(108, 99, 255, 0.5);
+            position: relative;
+            z-index: 2;
+            transition: all 0.5s ease;
+        }
+        
+        /* Animated circles around profile */
+        .profile-img::before,
+        .profile-img::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            z-index: 1;
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        .profile-img::before {
+            width: 240px;
+            height: 240px;
+            top: -15px;
+            left: -15px;
+            animation-delay: 0.5s;
+        }
+        
+        .profile-img::after {
+            width: 260px;
+            height: 260px;
+            top: -25px;
+            left: -25px;
+            animation-delay: 1s;
+        }
+        
+        /* Flash animation */
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; box-shadow: 0 0 30px rgba(255, 255, 255, 0.8); }
+        }
+        
+        /* Pulse animation for circles */
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% { 
+                transform: scale(1.05);
+                opacity: 0.3;
+            }
+        }
+        
+        /* Add flash effect on hover */
+        .profile-img:hover {
+            animation: flash 2s infinite;
+            transform: scale(1.03);
+        }
+        
+        /* Floating tech icons */
+        .tech-orbits {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            top: -40px;
+            left: -40px;
+            z-index: 1;
+        }
+        
+        .tech-icon {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            animation: orbit 20s linear infinite;
+        }
+        
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
         }
         
         h1 {
@@ -63,16 +153,42 @@
                 
         .badges {
             display: flex;
-            justify-content: flex-start; /* Changed from center to left-align */
-            gap: 15px; /* Increased gap */
-            margin: 25px 0; /* Increased margin */
-            padding: 30px 0 30px 60px; /* Added padding for semi-circle space */
+            justify-content: center;
+            gap: 20px;
+            margin: 30px auto;
+            padding: 40px 0;
             position: relative;
-            width: fit-content;
-            transform: scale(1.2); /* Makes the entire container 20% larger */
-            transform-origin: left;
+            width: 80%;
+            max-width: 600px;
         }
-    
+        
+        /* Semi-circle background for badges */
+        .badges::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            height: 100px;
+            border-radius: 0 0 50% 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-top: none;
+            z-index: 1;
+        }
+        
+        .badges img {
+            transform: scale(1.3);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .badges img:hover {
+            transform: scale(1.5);
+            filter: drop-shadow(0 0 8px white);
+        }
         
         .section {
             background: white;
@@ -214,6 +330,21 @@
             .skills-container {
                 grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             }
+            
+            .profile-img {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .profile-img::before {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .profile-img::after {
+                width: 220px;
+                height: 220px;
+            }
         }
     </style>
     
@@ -221,7 +352,15 @@
 <body>
     <div class="container">
         <header>
-            <img src="me.jpg" alt="Fatiha LAAOUAFI" class="profile-img">
+            <div class="profile-container">
+                <img src="me.jpg" alt="Fatiha LAAOUAFI" class="profile-img">
+                <div class="tech-orbits">
+                    <div class="tech-icon" style="animation-delay: 0s;"><i class="fab fa-python"></i></div>
+                    <div class="tech-icon" style="animation-delay: -5s;"><i class="fab fa-flask"></i></div>
+                    <div class="tech-icon" style="animation-delay: -10s;"><i class="fab fa-github"></i></div>
+                    <div class="tech-icon" style="animation-delay: -15s;"><i class="fas fa-database"></i></div>
+                </div>
+            </div>
             <h1>Fatiha LAAOUAFI</h1>
             <h2>Data Scientist | Backend Developer</h2>
             <div class="badges">
@@ -242,8 +381,8 @@
                     <ul>
                         <li>Data Mining techniques and applications</li>
                         <li>Advanced Machine Learning algorithms</li>
-                        <li> Api communication </li>
-                        <li>Advanced Machine Learning algorithms</li>
+                        <li>API communication</li>
+                        <li>Cloud computing solutions</li>
                     </ul>
                 </div>
             </div>
