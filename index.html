@@ -72,34 +72,7 @@
             transform: scale(1.2); /* Makes the entire container 20% larger */
             transform-origin: left;
         }
-        
-        /* Semi-circle background effect */
-        .badges::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 120px;
-            height: 240px;
-            border-radius: 120px 0 0 120px;
-            background: rgba(108, 99, 255, 0.1); /* Light purple matching your theme */
-            border: 2px dashed var(--primary);
-            border-right: none;
-            z-index: -1;
-        }
-        
-        /* Make the badges themselves larger */
-        .badges img {
-            transform: scale(1.3); /* Makes each badge 30% larger */
-            transition: transform 0.3s ease;
-        }
-        
-        /* Hover effect for badges */
-        .badges img:hover {
-            transform: scale(1.5);
-            filter: drop-shadow(0 0 5px var(--primary));
-        }
+    
         
         .section {
             background: white;
