@@ -3,160 +3,457 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My CV</title>
+    <title>Fatiha Laaouafi | Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            color: var(--text-color);
+            background-color: #f9f9f9;
         }
-        header {
-            background: #0073e6;
-            color: white;
-            text-align: center;
-            padding: 1.5em 0;
-        }
-        header img { 
-            width: 150px;
-            border-radius: 50%;
-            margin-top: 10px;
-        }
+        
         .container {
-            width: 80%;
+            max-width: 1200px;
             margin: 0 auto;
-            background: white;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
             padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        h1, h2 {
-            color: #333;
+        
+        /* Sidebar Styles */
+        .sidebar {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            text-align: center;
         }
-        ul {
-            list-style: none;
-            padding: 0;
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--light-color);
+            margin: 0 auto 20px;
+            display: block;
         }
-        ul li {
-            margin-bottom: 10px;
+        
+        .sidebar h1 {
+            color: var(--secondary-color);
+            margin: 10px 0 5px;
+            font-size: 1.8rem;
         }
-        .section {
+        
+        .sidebar h2 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin: 0 0 20px;
+            font-weight: 400;
+        }
+        
+        .contact-info {
+            text-align: left;
+            margin: 25px 0;
+        }
+        
+        .contact-info div {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .skills {
+            text-align: left;
+            margin-top: 30px;
+        }
+        
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: var(--light-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 10px;
             margin-bottom: 20px;
         }
-        .tools, .projects {
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        /* About Section */
+        .about-text {
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+        
+        /* Tools Section */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .tool-card {
+            background: var(--light-color);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .tool-card i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .project-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .project-img {
+            height: 180px;
+            background: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-title {
+            margin: 0 0 10px;
+            color: var(--secondary-color);
+        }
+        
+        .project-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
-        .tools div, .projects div {
-            background-color: #e0e0e0;
-            padding: 10px;
-            border-radius: 5px;
-            width: 200px;
-            text-align: center;
+        
+        .tag {
+            background: var(--light-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-light);
         }
-        .project-card {
-            position: relative;
-            width: 200px;
-            background-color: #e0e0e0;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-        }
-        .project-details {
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            width: 100%;
-            height: 100%;
-            box-sizing: border-box;
-        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
             .container {
-                width: 100%;
+                grid-template-columns: 1fr;
                 padding: 10px;
             }
-            .tools div, .projects div {
-                width: 100%;
+            
+            .sidebar {
+                margin-bottom: 20px;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>WHO I AM ?</h1>
-        <p>Hi, I am  Fatiha Laaouafi</p>
-        <!-- Add your image here -->
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuUAaCexCAdZ5zlY2up5aKVinogvidkEY3AA&s" alt="Fatiha Laaouafi">
-    </header>
-
     <div class="container">
-        <section class="section">
-            <h2>Tools I Master</h2>
-            <div class="tools">
-                <div onclick="showToolInfo('github')">GitHub</div>
-                <div onclick="showToolInfo('python')">Python</div>
-                <div onclick="showToolInfo('flask')">Flask</div>
-                <div onclick="showToolInfo('jupyter')">Jupyter Notebooks</div>
-                <div onclick="showToolInfo('flutter')">Flutter</div>
-                <div onclick="showToolInfo('firebase')">Firebase</div>
-                <div onclick="showToolInfo('sql')">SQL</div>
-                <div onclick="showToolInfo('docker')">Docker</div>
-            </div>
-            <div id="tool-info" style="margin-top: 20px; padding: 10px; background: #f0f0f0; border-radius: 5px;"></div>
-        </section>
-
-        <section class="section">
-            <h2>Projects I Made</h2>
-            <div class="projects">
-                <div class="project-card" onmouseover="showDetails('weather')" onmouseout="hideDetails('weather')">
-                    <h3>Weather Forecasting App</h3>
-                    <p class="project-details" id="weather">A weather prediction application using machine learning models.</p>
+        <!-- Sidebar with profile info -->
+        <aside class="sidebar">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuUAaCexCAdZ5zlY2up5aKVinogvidkEY3AA&s" alt="Fatiha Laaouafi" class="profile-img">
+            <h1>Fatiha Laaouafi</h1>
+            <h2>Software Developer</h2>
+            
+            <div class="contact-info">
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <span>your.email@example.com</span>
                 </div>
-                <div class="project-card" onmouseover="showDetails('pickschool')" onmouseout="hideDetails('pickschool')">
-                    <h3>PickSchool</h3>
-                    <p class="project-details" id="pickschool">An application to predict student selection into schools based on their profile.</p>
+                <div>
+                    <i class="fas fa-phone"></i>
+                    <span>+123 456 7890</span>
                 </div>
-                <div class="project-card" onmouseover="showDetails('linecar')" onmouseout="hideDetails('linecar')">
-                    <h3>Line Following Car</h3>
-                    <p class="project-details" id="linecar">A robotics project that uses a sensor to follow a line autonomously.</p>
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Your City, Country</span>
                 </div>
-                <div class="project-card" onmouseover="showDetails('yolo')" onmouseout="hideDetails('yolo')">
-                    <h3>YOLO Detection Model</h3>
-                    <p class="project-details" id="yolo">A real-time object detection model using the YOLO algorithm.</p>
+                <div>
+                    <i class="fab fa-github"></i>
+                    <span>github.com/yourusername</span>
+                </div>
+                <div>
+                    <i class="fab fa-linkedin"></i>
+                    <span>linkedin.com/in/yourprofile</span>
                 </div>
             </div>
-        </section>
+            
+            <div class="skills">
+                <h3 class="section-title">Skills</h3>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Python</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Flutter</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Machine Learning</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>SQL</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Docker</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%;"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <section class="about">
+                <h2 class="section-title">About Me</h2>
+                <p class="about-text">
+                    Passionate software developer with expertise in Python, machine learning, and mobile application development. 
+                    I specialize in creating efficient, scalable solutions to complex problems. 
+                    With a strong foundation in computer science and hands-on experience in various technologies, 
+                    I deliver high-quality software that meets user needs and business objectives.
+                </p>
+            </section>
+            
+            <section class="tools">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <i class="fab fa-github"></i>
+                        <h3>GitHub</h3>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fab fa-python"></i>
+                        <h3>Python</h3>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-flask"></i>
+                        <h3>Flask</h3>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-book"></i>
+                        <h3>Jupyter</h3>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Flutter</h3>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-database"></i>
+                        <h3>Firebase</h3>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fas fa-server"></i>
+                        <h3>SQL</h3>
+                    </div>
+                    <div class="tool-card">
+                        <i class="fab fa-docker"></i>
+                        <h3>Docker</h3>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="projects">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-cloud-sun" style="font-size: 3rem;"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Weather Forecasting App</h3>
+                            <p class="project-description">
+                                A weather prediction application using machine learning models to provide accurate forecasts.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">ML</span>
+                                <span class="tag">Flask</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-school" style="font-size: 3rem;"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">PickSchool</h3>
+                            <p class="project-description">
+                                An application to predict student selection into schools based on their academic profile.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Flutter</span>
+                                <span class="tag">Firebase</span>
+                                <span class="tag">ML</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-robot" style="font-size: 3rem;"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Line Following Car</h3>
+                            <p class="project-description">
+                                A robotics project that uses sensors to follow a line autonomously with precision.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Arduino</span>
+                                <span class="tag">C++</span>
+                                <span class="tag">Robotics</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-eye" style="font-size: 3rem;"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">YOLO Detection Model</h3>
+                            <p class="project-description">
+                                A real-time object detection model using the YOLO algorithm for various applications.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">CV</span>
+                                <span class="tag">Deep Learning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
-
-    <script>
-        function showToolInfo(tool) {
-            let toolInfo = {
-                github: "GitHub is a platform for version control and collaboration.",
-                python: "Python is a high-level programming language used for web development, data analysis, and more.",
-                flask: "Flask is a lightweight web framework for building web applications in Python.",
-                jupyter: "Jupyter Notebooks are interactive coding environments used for data science and machine learning.",
-                flutter: "Flutter is a UI toolkit for building natively compiled applications for mobile, web, and desktop.",
-                firebase: "Firebase is a platform that provides backend services like authentication, database, and hosting.",
-                sql: "SQL (Structured Query Language) is used to manage and manipulate databases.",
-                docker: "Docker is a platform that enables developers to package and deploy applications inside containers."
-            };
-
-            document.getElementById('tool-info').innerHTML = toolInfo[tool] || "Information not available.";
-        }
-
-        function showDetails(project) {
-            document.getElementById(project).style.display = 'block';
-        }
-
-        function hideDetails(project) {
-            document.getElementById(project).style.display = 'none';
-        }
-    </script>
 </body>
 </html>
